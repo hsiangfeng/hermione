@@ -10,7 +10,6 @@ const openAI = new OpenAIApi(configuration);
 
 async function openAiMessage(prompt) {
   try {
-    console.log(prompt);
     const { data } = await openAI.createCompletion({
       model: process.env.OPEN_AI_GPT_MODEL || 'text-curie-001',
       prompt,
