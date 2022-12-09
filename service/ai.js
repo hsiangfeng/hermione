@@ -6,16 +6,15 @@ const configuration = new Configuration({
   apiKey: process.env.OPEN_AI_API_KEY,
 });
 
-const openai = new OpenAIApi(configuration);
+const openAI = new OpenAIApi(configuration);
 
 async function openAiMessage(prompt) {
   try {
-    const { data } = await openai.createCompletion({
+    const { data } = await openAI.createCompletion({
       model: process.env.OPEN_AI_GPT_MODEL,
       prompt,
-      max_tokens: 100,
+      max_tokens: process.env.OPEN_AI_MAX_TOKENS,
       temperature: 0,
-      logprobs: 3,
     });
     const [choices] = data.choices;
 

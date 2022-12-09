@@ -13,13 +13,6 @@ const client = new Client({
 });
 
 client.once('ready', (c) => {
-  // c.user.setStatus('dnd');
-
-  c.user.setActivity('六角學院帶你學到會！', {
-    type: 'WATCHING',
-    url: 'https://www.youtube.com/channel/UC-b2nGm0xLzic38Byti0VjA',
-  });
-
   // eslint-disable-next-line no-console
   console.log(`Ready! Logged in as ${c.user.tag}`);
 });
@@ -30,23 +23,24 @@ client.on('messageCreate', async (msg) => {
   let tempMsg = null;
 
   try {
-    // reply loading message
     const replyMessage = '等我一下，我正在想要怎麼回覆你...';
     tempMsg = await msg.channel.send(replyMessage);
-    let tempContent = '';
+
     const forums = await msg.channel.messages.fetch();
-    // reverse forums
+
     forums.reverse();
 
+    let tempContent = '';
     forums.forEach((forum) => {
       if (forum.content === replyMessage) return;
       tempContent += `${forum.content}\n`;
     });
 
-    const count = process.env.TEXT_COUNT;
-    if (tempContent.length > count) {
+    const maxTextLength = process.env.MAX_TEXT_LENGTH;
+
+    if (tempContent.length > maxTextLength) {
       await tempMsg.delete();
-      await msg.channel.send(`對不起 >_< 這個論壇內容已經超過 **${count}** 字了！\n所以我無法在繼續回覆你了...\n建議你另外開啟論壇唷~`);
+      await msg.channel.send(`對不起 >_< 這個論壇內容已經超過 **${maxTextLength}** 字了！\n所以我無法在繼續回覆你了...\n建議你另外開啟論壇唷~`);
       return;
     }
 
