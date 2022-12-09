@@ -3,21 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.15.0"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hsiangfeng/discord-open-ai.git"
+    "url": "git+https://github.com/hsiangfeng/Hermione.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hsiangfeng/discord-open-ai/issues"
+    "url": "https://github.com/hsiangfeng/hermione/issues"
   },
-  "homepage": "https://github.com/hsiangfeng/discord-open-ai#readme",
+  "homepage": "https://github.com/hsiangfeng/hermione#readme",
   "dependencies": {
     "discord.js": "14.6.0",
     "dotenv": "^16.0.3",
