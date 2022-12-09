@@ -19,7 +19,7 @@ async function openAiMessage(prompt) {
     });
     const [choices] = data.choices;
 
-    return choices.text.trim();
+    return choices.text.trim() || '抱歉，我沒有話可說了。';
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
