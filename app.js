@@ -43,7 +43,7 @@ client.on('messageCreate', async (msg) => {
       tempContent += `${forum.content}\n`;
     });
 
-    const count = 1500;
+    const count = process.env.TEXT_COUNT;
     if (tempContent.length > count) {
       await tempMsg.delete();
       await msg.channel.send(`對不起 >_< 這個論壇內容已經超過 **${count}** 字了！\n所以我無法在繼續回覆你了...\n建議你另外開啟論壇唷~`);
