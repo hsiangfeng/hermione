@@ -1,0 +1,31 @@
+{
+  "name": "discord-open-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsiangfeng/discord-open-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hsiangfeng/discord-open-ai/issues"
+  },
+  "homepage": "https://github.com/hsiangfeng/discord-open-ai#readme",
+  "dependencies": {
+    "discord.js": "14.6.0",
+    "dotenv": "^16.0.3",
+    "i": "^0.3.7",
+    "openai": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
+  }
+}
