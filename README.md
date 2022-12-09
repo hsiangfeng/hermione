@@ -62,8 +62,11 @@ DISCORD_CHANNEL_ID=
 # Open AI
 OPEN_AI_API_KEY=
 
-# Text Count
-TEXT_COUNT=1000
+# Max Tokens
+OPEN_AI_MAX_TOKENS=125
+
+# Max Text Length
+MAX_TEXT_LENGTH=1000
 
 # Open AI Model
 ## text-davinci-003 => 達芬奇：最聰明，適合處理複雜的結論、總結前後
@@ -75,6 +78,8 @@ OPEN_AI_GPT_MODEL="text-davinci-003"
 
 Discord Channel 主要是用來限制妙麗只能在特定頻道回應，避免過度回應而消耗過多的 Tokens。
 
+Max Tokens 主要是限制妙麗回應的字數，因為每個字都會消耗一個 Token，所以可以設定回應的字數。
+
 Open AI Model 目前有四種，可以自行選擇，目前最強大的是達芬奇，但是也是最耗費 Tokens，同時也是最聰明的。
 
-Text Count 主要是避免一個討論串太長，妙麗會回應太多，因此可以設定回應的字數。
+Max Text Length 主要是避免一個貼文的內容文字太多，而導致 Tokens 消耗過快以及回應時間過長。
