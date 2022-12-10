@@ -1,7 +1,10 @@
 require('dotenv').config();
+const express = require('express');
 const { Client, GatewayIntentBits } = require('discord.js');
 const forums = require('./src/forums');
 const channel = require('./src/channel');
+
+const app = express();
 
 const client = new Client({
   intents: [
@@ -30,3 +33,13 @@ client.on('messageCreate', async (msg) => {
 });
 
 client.login(process.env.DISCORD_BOT_TOKEN);
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log(`listening on ${port}`);
+});
