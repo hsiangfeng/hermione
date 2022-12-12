@@ -55,7 +55,8 @@ pnpm start
 # Discord Bot
 DISCORD_BOT_TOKEN=
 
-# Discord Channel
+# Discord Channel ID
+DISCORD_FORUM_ID=
 DISCORD_CHANNEL_ID=
 
 # Open AI
@@ -74,6 +75,8 @@ MAX_TEXT_LENGTH=1000
 ## text-ada-001 => 阿達：適合分析文字、簡單分類、地址修正、關鍵字
 OPEN_AI_GPT_MODEL="text-davinci-003"
 ```
+
+可以嘗試輸入 `cp .env.example .env` 來複製 `.env.example` 檔案。
 
 Discord Channel 主要是用來限制妙麗只能在特定頻道回應，避免過度回應而消耗過多的 Tokens。
 
