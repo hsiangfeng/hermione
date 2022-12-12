@@ -1,9 +1,13 @@
-require('dotenv').config();
-
 const { Configuration, OpenAIApi } = require('openai');
 
+const {
+  OPEN_AI_API_KEY,
+  OPEN_AI_MAX_TOKENS,
+  OPEN_AI_GPT_MODEL,
+} = require('../../config');
+
 const configuration = new Configuration({
-  apiKey: process.env.OPEN_AI_API_KEY,
+  apiKey: OPEN_AI_API_KEY,
 });
 
 const openAI = new OpenAIApi(configuration);
@@ -11,9 +15,9 @@ const openAI = new OpenAIApi(configuration);
 async function openAiMessage(prompt) {
   try {
     const { data } = await openAI.createCompletion({
-      model: process.env.OPEN_AI_GPT_MODEL || 'text-curie-001',
+      model: OPEN_AI_GPT_MODEL,
       prompt,
-      max_tokens: Number(process.env.OPEN_AI_MAX_TOKENS) || 100,
+      max_tokens: Number(OPEN_AI_MAX_TOKENS),
       temperature: 0,
       logprobs: 3,
     });

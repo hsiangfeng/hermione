@@ -1,6 +1,13 @@
-require('dotenv').config();
 const express = require('express');
 const { Client, GatewayIntentBits } = require('discord.js');
+
+const {
+  PORT,
+  DISCORD_FORUM_ID,
+  DISCORD_BOT_TOKEN,
+  DISCORD_CHANNEL_ID,
+} = require('./config');
+
 const forums = require('./src/forums');
 const channel = require('./src/channel');
 
@@ -23,23 +30,22 @@ client.once('ready', (c) => {
 client.on('messageCreate', async (msg) => {
   if (msg.author?.bot) return;
 
-  if (msg.channel.parentId === process.env.DISCORD_CHANNEL_ID) {
+  if (msg.channel.parentId === DISCORD_FORUM_ID) {
     forums(msg);
   }
 
-  if (msg.channel.id === '998519203399208981') {
+  if (msg.channel.id === DISCORD_CHANNEL_ID) {
     channel(msg);
   }
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(DISCORD_BOT_TOKEN);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`listening on ${port}`);
+  console.log(`listening on ${PORT}`);
 });

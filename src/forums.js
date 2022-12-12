@@ -1,3 +1,5 @@
+const { MAX_TEXT_LENGTH } = require('../config');
+
 const { openAiMessage } = require('./service/ai');
 
 async function index(msg) {
@@ -9,8 +11,8 @@ async function index(msg) {
     const forums = await msg.channel.messages.fetch();
 
     forums.reverse();
-    const maxTextLength = process.env.MAX_TEXT_LENGTH || 1000;
-    const sendMaxLengthMessage = `對不起 >_< 這個貼文內容已經超過 **${maxTextLength}** 字了！\n所以我無法在繼續回覆你了...\n建議你另外開啟新貼文唷~`;
+
+    const sendMaxLengthMessage = `對不起 >_< 這個貼文內容已經超過 **${MAX_TEXT_LENGTH}** 字了！\n所以我無法在繼續回覆你了...\n建議你另外開啟新貼文唷~`;
 
     let tempContent = '';
     forums.forEach((forum) => {
@@ -21,7 +23,7 @@ async function index(msg) {
       tempContent += `${forum.content}\n`;
     });
 
-    if (tempContent.length > maxTextLength) {
+    if (tempContent.length > MAX_TEXT_LENGTH) {
       await tempMsg.delete();
       await msg.channel.send(sendMaxLengthMessage);
       return;
