@@ -1,49 +1,29 @@
 const express = require('express');
-const { Client, GatewayIntentBits } = require('discord.js');
 
 const {
   PORT,
-  DISCORD_FORUM_ID,
   DISCORD_BOT_TOKEN,
-  DISCORD_CHANNEL_ID,
 } = require('./config');
 
-const forums = require('./src/forums');
-const channel = require('./src/channel');
+const { discord } = require('./connection');
+const { botMessages } = require('./services');
 
-const app = express();
+discord.login(DISCORD_BOT_TOKEN);
 
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildMembers,
-  ],
-});
-
-client.once('ready', (c) => {
+discord.once('ready', (c) => {
   // eslint-disable-next-line no-console
   console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-client.on('messageCreate', async (msg) => {
-  if (msg.author?.bot) return;
+discord.on('messageCreate', async (message) => {
+  if (message.author?.bot) return;
 
-  if (msg.channel.parentId === DISCORD_FORUM_ID) {
-    forums(msg);
-  }
-
-  if (msg.channel.id === DISCORD_CHANNEL_ID) {
-    channel(msg);
-  }
+  botMessages(message);
 });
 
-client.login(DISCORD_BOT_TOKEN);
+const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
