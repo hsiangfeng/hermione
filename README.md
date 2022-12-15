@@ -98,8 +98,9 @@ OPEN_AI_GPT_MODEL=
 
 - DISCORD_MODE：設置回覆模式，但若為 all 模式，則 DISCORD_CHANNEL_ID 與 DISCORD_FORUM_ID 必須設置。
 - DISCORD_BOT_TOKEN：Discord Bot 機器人的 Token。
-- DISCORD_CHANNEL_ID & DISCORD_FORUM_ID：主要是用來限制妙麗只能在特定頻道回應，避免過度回應而消耗過多的 Tokens。
-- DISCORD_CHANNEL_MAX_MESSAGE：主要是限制妙麗撈取文字頻道最大筆數，避免撈取過多的資料。
+- DISCORD_CHANNEL_ID & DISCORD_FORUM_ID：主要是用來限制妙麗只能在特定頻道回應，避免妙麗到處回應而消耗過多的 Tokens。
+- DISCORD_CHANNEL_MAX_MESSAGE：主要是限制妙麗撈取文字頻道最大筆數，避免撈取過多的資料，例如：撈取十筆留言，就設置 10。
+  - 我個人測試下來，認為文字頻道 AI 滿容易笨笨的，所以個人還是會建議讓妙麗在論壇頻道回應為主，因為比較容易有上下關聯。
 - OPEN_AI_API_KEY：Open AI 的 API Key。
 - OPEN_AI_MAX_TOKENS：主要是限制妙麗回應的字數，因為每個字都會消耗一個 Token，所以可以設定回應的字數。
 - MAX_TEXT_LENGTH：主要是避免一個貼文的內容文字太多，而導致 Tokens 消耗過快以及回應時間過長。
