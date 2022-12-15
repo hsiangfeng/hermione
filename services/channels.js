@@ -9,14 +9,18 @@ async function channelMessage(message) {
   try {
     cacheMsg = await message.channel.send(replyMessage);
 
-    const channelMessageData = await message.channel.messages.fetch();
-    const channelMessageDataArray = channelMessageData.map((msg) => msg.content);
-
-    const prompt = channelMessageDataArray
-      .slice(0, DISCORD_CHANNEL_MAX_MESSAGE)
-      .filter((msg) => msg !== replyMessage && msg !== '')
-      .reverse()
-      .join('\n');
+    let prompt = '';
+    if (Number(DISCORD_CHANNEL_MAX_MESSAGE) === 1) {
+      prompt = message.content;
+    } else {
+      const channelMessageData = await message.channel.messages.fetch();
+      const channelMessageDataArray = channelMessageData.map((msg) => msg.content);
+      prompt = channelMessageDataArray
+        .reverse()
+        .filter((msg) => msg !== replyMessage && msg !== '')
+        .slice(`-${DISCORD_CHANNEL_MAX_MESSAGE}`)
+        .join('\n');
+    }
 
     const text = await aiAssistant(prompt);
 
