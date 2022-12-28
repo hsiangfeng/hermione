@@ -13,7 +13,7 @@ async function aiAssistant(prompt) {
   const { data } = await openAI.createCompletion({
     model: OPEN_AI_GPT_MODEL,
     prompt,
-    max_tokens: Number(OPEN_AI_MAX_TOKENS),
+    max_tokens: OPEN_AI_MAX_TOKENS,
     temperature: OPEN_AI_TEMPERATURE,
     top_p: OPEN_AI_TOP_P,
     frequency_penalty: OPEN_AI_FREQUENCY_PENALTY,
