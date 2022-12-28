@@ -10,15 +10,17 @@ async function channelMessage(message) {
     cacheMsg = await message.channel.send(replyMessage);
 
     let prompt = '';
-    if (Number(DISCORD_CHANNEL_MAX_MESSAGE) === 1) {
+    if (DISCORD_CHANNEL_MAX_MESSAGE === 1) {
       prompt = message.content;
     } else {
-      const channelMessageData = await message.channel.messages.fetch();
+      const channelMessageData = await message.channel
+        .messages.fetch({
+          limit: DISCORD_CHANNEL_MAX_MESSAGE + 1,
+        });
       const channelMessageDataArray = channelMessageData.map((msg) => msg.content);
       prompt = channelMessageDataArray
         .reverse()
         .filter((msg) => msg !== replyMessage && msg !== '')
-        .slice(`-${DISCORD_CHANNEL_MAX_MESSAGE}`)
         .join('\n');
     }
 
