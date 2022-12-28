@@ -21,11 +21,13 @@
 
 ## 專案說明
 
-> 專案目前部署於 [Render](https://render.com) 伺服器，採用的免費版，因此會有時數限制，目前 Render 伺服器每月可用時數為 750 小時，每月 1 日會重置。
+> 專案可以考慮部署於 [Render](https://render.com) 伺服器，採用的免費版，因此會有時數限制，目前 Render 伺服器每月可用時數為 750 小時，每月 1 日會重置。
 > 一天約 24 小時，一個月大約 31 天，因此 31 天 * 24 小時 = 744 小時，所以理論上來講是足夠使用的。
 > 教學可詳見：[關於從 Heroku 跳到 Render 這件事情](https://israynotarray.com/other/20221213/3036227586/)
 
 如果想避免 Render 的機器睡著的話，可以使用「[UptimeRobot](https://uptimerobot.com/)」讓機器保持開機狀態。
+
+> 如果不想部署於 Render，也可以考慮部署到 [Fly.io](https://israynotarray.com/other/20221216/786812101/)。
 
 ### Node.js 版本
 
