@@ -1,6 +1,10 @@
 const {
   OPEN_AI_MAX_TOKENS,
   OPEN_AI_GPT_MODEL,
+  OPEN_AI_TEMPERATURE,
+  OPEN_AI_TOP_P,
+  OPEN_AI_FREQUENCY_PENALTY,
+  OPEN_AI_PRESENCE_PENALTY,
 } = require('../config');
 
 const { openAI } = require('../connection');
@@ -10,6 +14,10 @@ async function aiAssistant(prompt) {
     model: OPEN_AI_GPT_MODEL,
     prompt,
     max_tokens: Number(OPEN_AI_MAX_TOKENS),
+    temperature: OPEN_AI_TEMPERATURE,
+    top_p: OPEN_AI_TOP_P,
+    frequency_penalty: OPEN_AI_FREQUENCY_PENALTY,
+    presence_penalty: OPEN_AI_PRESENCE_PENALTY,
   });
   const [choices] = data.choices;
 
