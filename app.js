@@ -21,6 +21,7 @@ discord.on('messageCreate', async (message) => {
   botMessages(message);
 });
 
+// 部分伺服器會需要 HTTP Endpoint
 const app = express();
 
 app.get('/', (req, res) => res.send('Hello World!'));
