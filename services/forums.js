@@ -13,22 +13,26 @@ async function forumMessage(message) {
   try {
     cacheMessages = await message.channel.send(replyMessage);
     const forumsMessages = await message.channel.messages.fetch();
+    const reverseMessages = forumsMessages.reverse();
+    const messages = reverseMessages.map((msg) => {
+      if (msg.author.bot) {
+        if (msg.content === replyMessage) {
+          return null;
+        }
 
-    const filterMessages = forumsMessages
-      .reverse()
-      .filter((msg) => msg.content
-      && msg.content !== replyMessage
-      && msg.content !== sendMaxLengthMessage(MAX_TEXT_LENGTH));
+        return {
+          role: 'system',
+          content: msg.content,
+        };
+      }
 
-    const prompt = filterMessages.map((msg) => msg.content).join('\n');
+      return {
+        role: 'user',
+        content: msg.content,
+      };
+    }).filter((msg) => msg !== null);
 
-    if (prompt.length > MAX_TEXT_LENGTH) {
-      await cacheMessages.delete();
-      message.channel.send(sendMaxLengthMessage(MAX_TEXT_LENGTH));
-      return;
-    }
-
-    const text = await aiAssistant(prompt);
+    const text = await aiAssistant(messages);
 
     await cacheMessages.delete();
 
