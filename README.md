@@ -1,4 +1,4 @@
-# 妙麗·格蘭傑
+# 妙麗·格蘭傑(Text Discord Bot)
 
 ![妙麗·格蘭傑](https://i.imgur.com/HJ4DIw0.png)
 
@@ -6,7 +6,12 @@
 
 ## 關於
 
-這是一個基於 [OPEN AI](https://openai.com/) 的 GPT-3 Discord 機器人，名為「妙麗·格蘭傑」。
+這個專案總共有兩個分支，分別是：
+
+- [text](https://github.com/hsiangfeng/hermione/tree/text)
+  - 基於 [OPEN AI](https://openai.com/) 的 Text 文本補全 Discord 機器人，名為「妙麗·格蘭傑」。
+- [gpt-3.5-turbo](https://github.com/hsiangfeng/hermione/tree/gpt-3.5-turbo)
+  - 基於 [OPEN AI](https://openai.com/) 的 GPT-3.5 Turbo Discord 機器人，名為「妙麗·格蘭傑」。
 
 主要職責是負責與大家聊天，解決各式各樣的疑難雜症，主要適用於 Discord 的論壇，只要有使用者開啟一個新的貼文，妙麗就會立即回應你，而一個貼文代表一個主題，這樣可以讓妙麗可以更好地理解討論內容並集中討論。
 
