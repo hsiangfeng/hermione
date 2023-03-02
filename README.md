@@ -90,11 +90,8 @@ OPEN_AI_MAX_TOKENS=
 MAX_TEXT_LENGTH=
 
 # Open AI Model
-## text-davinci-003 => 達芬奇：最聰明，適合處理複雜的結論、總結前後
-## text-curie-001 => 居里夫人：適合處理語言翻譯、情感、摘要
-## text-babbage-001 => 巴貝奇：適合簡單分類、語義搜尋分類 
-## text-ada-001 => 阿達：適合分析文字、簡單分類、地址修正、關鍵字
-OPEN_AI_GPT_MODEL=
+## 僅限 gpt-3.5-turbo 系列
+OPEN_AI_GPT_MODEL=gpt-3.5-turbo
 
 # Open AI Temperature
 OPEN_AI_TEMPERATURE=
