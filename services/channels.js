@@ -9,22 +9,38 @@ async function channelMessage(message) {
   try {
     cacheMsg = await message.channel.send(replyMessage);
 
-    let prompt = '';
+    let messages = [];
     if (DISCORD_CHANNEL_MAX_MESSAGE === 1) {
-      prompt = message.content;
+      messages.push({
+        role: 'user',
+        content: message.content,
+      });
     } else {
       const channelMessageData = await message.channel
         .messages.fetch({
           limit: DISCORD_CHANNEL_MAX_MESSAGE + 1,
         });
-      const channelMessageDataArray = channelMessageData.map((msg) => msg.content);
-      prompt = channelMessageDataArray
-        .reverse()
-        .filter((msg) => msg !== replyMessage && msg !== '')
-        .join('\n');
+      const reverseMessages = channelMessageData.reverse();
+      messages = reverseMessages.map((msg) => {
+        if (msg.author.bot) {
+          if (msg.content === replyMessage) {
+            return null;
+          }
+
+          return {
+            role: 'system',
+            content: msg.content,
+          };
+        }
+
+        return {
+          role: 'user',
+          content: msg.content,
+        };
+      }).filter((msg) => msg !== null);
     }
 
-    const text = await aiAssistant(prompt);
+    const text = await aiAssistant(messages);
 
     await cacheMsg.delete();
 
