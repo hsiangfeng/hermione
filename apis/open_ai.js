@@ -9,19 +9,20 @@ const {
 
 const { openAI } = require('../connection');
 
-async function aiAssistant(prompt) {
-  const { data } = await openAI.createCompletion({
+async function aiAssistant(messages) {
+  const { data } = await openAI.createChatCompletion({
     model: OPEN_AI_GPT_MODEL,
-    prompt,
+    messages,
     max_tokens: OPEN_AI_MAX_TOKENS,
     temperature: OPEN_AI_TEMPERATURE,
     top_p: OPEN_AI_TOP_P,
     frequency_penalty: OPEN_AI_FREQUENCY_PENALTY,
     presence_penalty: OPEN_AI_PRESENCE_PENALTY,
   });
+
   const [choices] = data.choices;
 
-  return choices.text.trim() || '抱歉，我沒有話可說了。';
+  return choices.message.content || '抱歉，我沒有話可說了。';
 }
 
 module.exports = aiAssistant;
