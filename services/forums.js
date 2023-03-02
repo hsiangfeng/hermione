@@ -1,4 +1,4 @@
-const { MAX_TEXT_LENGTH } = require('../config');
+const { MAX_TEXT_LENGTH, OPEN_AI_GPT_PERSONA } = require('../config');
 
 const { aiAssistant } = require('../apis');
 
@@ -31,6 +31,17 @@ async function forumMessage(message) {
         content: msg.content,
       };
     }).filter((msg) => msg !== null);
+
+    // if (messages.length === MAX_TEXT_LENGTH) {
+    //   await cacheMessages.delete();
+    //   message.channel.send(sendMaxLengthMessage);
+    //   return;
+    // }
+
+    messages.unshift({
+      role: 'user',
+      content: OPEN_AI_GPT_PERSONA,
+    });
 
     const text = await aiAssistant(messages);
 
