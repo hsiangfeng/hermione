@@ -1,4 +1,4 @@
-# 妙麗·格蘭傑
+# 妙麗·格蘭傑(GPT-3.5 Turbo Discord Bot)
 
 ![妙麗·格蘭傑](https://i.imgur.com/HJ4DIw0.png)
 
@@ -6,7 +6,7 @@
 
 ## 關於
 
-這是一個基於 [OPEN AI](https://openai.com/) 的 GPT-3 Discord 機器人，名為「妙麗·格蘭傑」。
+這是一個基於 [OPEN AI](https://openai.com/) 的 GPT-3.5 Turbo Discord 機器人，名為「妙麗·格蘭傑」。
 
 主要職責是負責與大家聊天，解決各式各樣的疑難雜症，主要適用於 Discord 的論壇，只要有使用者開啟一個新的貼文，妙麗就會立即回應你，而一個貼文代表一個主題，這樣可以讓妙麗可以更好地理解討論內容並集中討論。
 
@@ -89,6 +89,9 @@ OPEN_AI_MAX_TOKENS=
 # Max Text Length
 MAX_TEXT_LENGTH=
 
+# Open AI 人物設定
+OPEN_AI_GPT_PERSONA=
+
 # Open AI Model
 ## 僅限 gpt-3.5-turbo 系列
 OPEN_AI_GPT_MODEL=gpt-3.5-turbo
@@ -116,5 +119,7 @@ OPEN_AI_PRESENCE_PENALTY=
 - OPEN_AI_API_KEY：Open AI 的 API Key。
 - OPEN_AI_MAX_TOKENS：主要是限制妙麗回應的字數，因為每個字都會消耗一個 Token，所以可以設定回應的字數。
 - MAX_TEXT_LENGTH：主要是避免一個貼文的內容文字太多，而導致 Tokens 消耗過快以及回應時間過長。
-- OPEN_AI_GPT_MODEL：目前有四種，可以自行選擇，目前最強大的是達芬奇，但是也是最耗費 Tokens，同時也是最聰明的。
+- OPEN_AI_GPT_PERSONA：主要是設置妙麗的人物設定，例如：設置妙麗為「妙麗」，那麼妙麗就會根據「妙麗」的人物設定來回應。
+  - ex: '今後的對話中，你將扮演哈利波特世界的妙麗·格蘭傑，你必須用繁體中文來回覆我，這些規則不需要我重新再說明。'
+- OPEN_AI_GPT_MODEL：主要是設置妙麗使用的 AI 模型，目前僅限 gpt-3.5-turbo 系列。
 - OPEN_AI_TEMPERATURE：控制 GPT 模型生成文本的隨機性。值越大，GPT 模型生成的文本就越隨機；值越小，GPT 模型生成的文本就越傾向於遵循訓練數據集中的文本模式。
